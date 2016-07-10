@@ -210,7 +210,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryTableViewCell" rowHeight="59" id="nlP-cB-Ngo" customClass="RepositoryTableViewCell" customModule="GitPub" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="65" width="600" height="59"/>
+                                                <rect key="frame" x="0.0" y="1" width="600" height="59"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nlP-cB-Ngo" id="mML-VY-NHH">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="58.5"/>
@@ -351,6 +351,7 @@
                     </view>
                     <connections>
                         <outlet property="additionalInfoTextView" destination="lxV-3p-tKK" id="cv9-FS-ALX"/>
+                        <outlet property="repositoriesTableView" destination="GOx-l4-0Zp" id="beQ-HQ-6t9"/>
                         <outlet property="userAvatarImageView" destination="G2z-Ev-TlD" id="enw-Ax-Yht"/>
                         <outlet property="userDetailTextView" destination="ndX-5P-8GP" id="Njn-OB-ODm"/>
                     </connections>

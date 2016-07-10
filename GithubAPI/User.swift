@@ -17,16 +17,17 @@ class User: NSManagedObject {
     @NSManaged var company: String?
     @NSManaged var email: String?
     @NSManaged var userName: String?
+    @NSManaged var localImageURL: String?
     @NSManaged var followersCount: NSNumber?
     @NSManaged var followingCount: NSNumber?
-    @NSManaged var localImageURL: String?
     @NSManaged var publicRepos: NSNumber?
     @NSManaged var publicGists: NSNumber?
+    @NSManaged var repositoriesSaved: NSNumber?
     @NSManaged var repositories: NSSet?
     
-    @NSManaged func addRepositoriesObject(course: Repository)
-    @NSManaged func removeRepositoriesObject(course: Repository)
-    @NSManaged func addRepositories(courses: NSSet)
-    @NSManaged func removeRepositories(courses: NSSet)
+    @NSManaged func addRepositoriesObject(repository: Repository)
+    @NSManaged func removeRepositoriesObject(repository: Repository)
+    @NSManaged func addRepositories(repositories: NSSet)
+    @NSManaged func removeRepositories(repositories: NSSet)
     
 }

@@ -94,6 +94,7 @@ class CoreDataManager {
         user.followingCount = properties[userPropertyKeys.following] as? NSNumber
         user.publicGists = properties[userPropertyKeys.publicGists] as? NSNumber
         user.publicRepos = properties[userPropertyKeys.publicRepos] as? NSNumber
+        user.repositoriesSaved = false
         
         return user
     }

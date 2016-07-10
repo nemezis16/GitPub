@@ -17,11 +17,12 @@
         <attribute name="publicGists" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="publicRepos" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="publicReposURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repositoriesSaved" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="repositories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Repository" inverseName="owner" inverseEntity="Repository" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Repository" positionX="-63" positionY="36" width="128" height="118"/>
-        <element name="User" positionX="-333" positionY="-9" width="128" height="210"/>
+        <element name="Repository" positionX="-63" positionY="36" width="128" height="120"/>
+        <element name="User" positionX="-333" positionY="-9" width="128" height="225"/>
     </elements>
 </model>

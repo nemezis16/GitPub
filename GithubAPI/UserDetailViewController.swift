@@ -10,12 +10,15 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
     
+    @IBOutlet weak var repositoriesTableView: UITableView!
     @IBOutlet weak var userDetailTextView: UITextView!
     @IBOutlet weak var additionalInfoTextView: UITextView!
     @IBOutlet weak var userAvatarImageView: UIImageView!
     
     var user: User!
     let networkManager = NetworkManager.sharedManager
+    var repositoriesArray = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +30,47 @@ class UserDetailViewController: UIViewController {
     
     private func prepareUI() {
         loadImage()
+        loadRepositories()
+        
         let userName = user.userName ?? "unknown"
         let company = user.company ?? "unknown"
         let email = user.email ?? "unknown"
         
         userDetailTextView.text = "User name: \(userName)\nCompany: \(company)\nEmail: \(email)"
+    }
+    
+    private func loadRepositories() {
+        if user.repositoriesSaved?.boolValue == false {
+            guard let repositoriesURLString = user.publicReposURL else {
+                return
+            }
+            guard let repositoriesURL = NSURL(string: repositoriesURLString) else {
+                return
+            }
+            networkManager.fetchDataFromURL((repositoriesURL), resopnseCompletion: { (data, response, error) in
+                do {
+                    guard let repositoriesArray = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? [[String: AnyObject]] else {
+                        return
+                    }
+                    
+                    let manager = CoreDataManager.sharedManager
+                    let set = NSMutableSet()
+                    for repositoryDict in repositoriesArray {
+                        if let repository = manager.createRepository(repositoryProperties: repositoryDict) {
+                            set.addObject(repository)
+                        }
+                    }
+                    
+                    self.user.addRepositories(set as NSSet)
+                    self.user.repositoriesSaved = true
+                    self.repositoriesArray = set.allObjects
+                    
+                    self.repositoriesTableView.reloadData()
+                } catch {
+                    print("error serializing JSON: \(error)")
+                }
+            })
+        }
     }
     
     private func loadImage() {
@@ -65,12 +104,22 @@ class UserDetailViewController: UIViewController {
 extension UserDetailViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if let repositoriesCount = user.repositories?.count {
+            return repositoriesCount
+        }
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(String(RepositoryTableViewCell) , forIndexPath: indexPath) as! RepositoryTableViewCell
+        
+        if let repository = repositoriesArray[indexPath.row] as? Repository {
+            cell.repositoryTitleLabel.text = repository.title
+            cell.languageLabel.text = repository.language
+            cell.forkCountLabel.text = repository.forksCount?.stringValue
+            cell.starsCountLabel.text = repository.starsCount?.stringValue
+        }
         
         
         return cell
