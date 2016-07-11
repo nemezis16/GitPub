@@ -46,6 +46,7 @@
 		A33709841D337DC30060804B /* DialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
 		A33709861D33940B0060804B /* SavedUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedUsersViewController.swift; sourceTree = "<group>"; };
 		A33709881D3394C50060804B /* SavedUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedUserTableViewCell.swift; sourceTree = "<group>"; };
+		A33709931D33BF450060804B /* uk */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = uk; path = uk.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +152,7 @@
 			knownRegions = (
 				en,
 				Base,
+				uk,
 			);
 			mainGroup = A3194FB61D30237A006F581F;
 			productRefGroup = A3194FC01D30237A006F581F /* Products */;
@@ -204,6 +206,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A3194FC71D30237A006F581F /* Base */,
+				A33709931D33BF450060804B /* uk */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
