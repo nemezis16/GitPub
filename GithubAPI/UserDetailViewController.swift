@@ -19,11 +19,19 @@ class UserDetailViewController: UIViewController {
     let networkManager = NetworkManager.sharedManager
     var repositoriesArray = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.prepareUI()
+    }
+    
+//MARK: - Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == String(DialogViewController) {
+            let controller = segue.destinationViewController as? DialogViewController
+            controller?.user = user
+        }
     }
     
 //MARK: - Private
@@ -35,8 +43,13 @@ class UserDetailViewController: UIViewController {
         let userName = user.userName ?? "unknown"
         let company = user.company ?? "unknown"
         let email = user.email ?? "unknown"
+        let followersCount = user.followersCount?.stringValue ?? "unknown"
+        let followingsCount = user.followingCount?.stringValue ?? "unknown"
+        let publicGists = user.publicGists?.stringValue ?? "unknown"
+        let publicRepos = user.publicRepos?.stringValue ?? "unknown"
         
         userDetailTextView.text = "User name: \(userName)\nCompany: \(company)\nEmail: \(email)"
+        additionalInfoTextView.text = "Followers count: \(followersCount)\nFlollowings count: \(followingsCount)\nPublic gists: \(publicGists)\nPublic repos: \(publicRepos)"
     }
     
     private func loadRepositories() {
@@ -65,11 +78,17 @@ class UserDetailViewController: UIViewController {
                     self.user.repositoriesSaved = true
                     self.repositoriesArray = set.allObjects
                     
-                    self.repositoriesTableView.reloadData()
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.repositoriesTableView.reloadData()
+                    }
                 } catch {
                     print("error serializing JSON: \(error)")
                 }
             })
+        } else {
+            if let array = user?.repositories?.allObjects as? [Repository] {
+                repositoriesArray = array
+            }
         }
     }
     
@@ -88,10 +107,14 @@ class UserDetailViewController: UIViewController {
                     guard let downloadedData = data, userName = strongSelf.user.userName else {
                         return
                     }
-                    strongSelf.userAvatarImageView.image = UIImage(data: downloadedData)
+                    
+                    dispatch_async(dispatch_get_main_queue(), { 
+                        strongSelf.userAvatarImageView.image = UIImage(data: downloadedData)
+                    })
+                    
                     let localImageURL = Utils.applicationDocumentsDirectory.URLByAppendingPathComponent(userName + ".png")
                     downloadedData.writeToURL(localImageURL, atomically: false)
-                    strongSelf.user.localImageURL = localImageURL.absoluteString
+                    strongSelf.user.localImageURL = localImageURL.path
                 })
             }
         }
@@ -120,7 +143,6 @@ extension UserDetailViewController: UITableViewDataSource {
             cell.forkCountLabel.text = repository.forksCount?.stringValue
             cell.starsCountLabel.text = repository.starsCount?.stringValue
         }
-        
         
         return cell
     }

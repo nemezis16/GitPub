@@ -18,6 +18,7 @@ class User: NSManagedObject {
     @NSManaged var email: String?
     @NSManaged var userName: String?
     @NSManaged var localImageURL: String?
+    @NSManaged var profileURL: String?
     @NSManaged var followersCount: NSNumber?
     @NSManaged var followingCount: NSNumber?
     @NSManaged var publicRepos: NSNumber?

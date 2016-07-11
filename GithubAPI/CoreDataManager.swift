@@ -20,6 +20,7 @@ struct userPropertyKeys {
     static let repositoriesList = "repositoriesList"
     static let imageURL = "avatar_url"
     static let publicReposURL = "repos_url"
+    static let profileURL = "html_url"
 }
 
 struct repositoryPropertyKeys {
@@ -86,6 +87,7 @@ class CoreDataManager {
             return nil
         }
         user.publicReposURL = properties[userPropertyKeys.publicReposURL] as? String
+        user.profileURL = properties[userPropertyKeys.profileURL] as? String
         user.imageURL = properties[userPropertyKeys.imageURL] as? String
         user.company = properties[userPropertyKeys.company] as? String
         user.userName = properties[userPropertyKeys.name] as? String
@@ -109,8 +111,31 @@ class CoreDataManager {
         repository.starsCount = properties[repositoryPropertyKeys.stargazersCount] as? NSNumber
         return repository
     }
+    
+    func getSavedUsers() -> [User]? {
+        let descriptor = NSSortDescriptor(key: "userName", ascending: true)
+        
+        let fetchRequest = NSFetchRequest(entityName: String(User))
+        fetchRequest.sortDescriptors = [descriptor]
+        
+        do {
+            let fetchedEntities = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [User]
+            return fetchedEntities
+        } catch {
+            print("error fetching entities: \(error)")
+        }
+        
+        return nil
+    }
+    
+    func deleteAllEntities() {
+        let fetchRequest = NSFetchRequest(entityName: "User")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try persistentStoreCoordinator.executeRequest(deleteRequest, withContext: managedObjectContext)
+        } catch let error as NSError {
+            print(error)
+        }
+    }
 }
-
-
-
-

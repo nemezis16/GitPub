@@ -21,6 +21,9 @@
 		A3194FDE1D31B2D9006F581F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3194FDD1D31B2D9006F581F /* Utils.swift */; };
 		A3194FE81D3256FC006F581F /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3194FE61D3256FC006F581F /* RepositoryTableViewCell.swift */; };
 		A3194FE91D3256FC006F581F /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3194FE71D3256FC006F581F /* UserDetailViewController.swift */; };
+		A33709851D337DC30060804B /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33709841D337DC30060804B /* DialogViewController.swift */; };
+		A33709871D33940B0060804B /* SavedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33709861D33940B0060804B /* SavedUsersViewController.swift */; };
+		A33709891D3394C50060804B /* SavedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33709881D3394C50060804B /* SavedUserTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		A3194FDD1D31B2D9006F581F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A3194FE61D3256FC006F581F /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		A3194FE71D3256FC006F581F /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		A33709841D337DC30060804B /* DialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
+		A33709861D33940B0060804B /* SavedUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedUsersViewController.swift; sourceTree = "<group>"; };
+		A33709881D3394C50060804B /* SavedUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedUserTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +88,9 @@
 		A3194FC11D30237A006F581F /* GitPub */ = {
 			isa = PBXGroup;
 			children = (
+				A33709861D33940B0060804B /* SavedUsersViewController.swift */,
 				A3194FE61D3256FC006F581F /* RepositoryTableViewCell.swift */,
+				A33709841D337DC30060804B /* DialogViewController.swift */,
 				A3194FE71D3256FC006F581F /* UserDetailViewController.swift */,
 				A3194FC41D30237A006F581F /* SearchViewController.swift */,
 				A3194FC21D30237A006F581F /* AppDelegate.swift */,
@@ -95,6 +103,7 @@
 				A3194FDB1D31A302006F581F /* Constants.swift */,
 				A3194FDD1D31B2D9006F581F /* Utils.swift */,
 				76FDEE661D323C740033DDC2 /* CoreDataModels */,
+				A33709881D3394C50060804B /* SavedUserTableViewCell.swift */,
 			);
 			name = GitPub;
 			path = GithubAPI;
@@ -174,13 +183,16 @@
 				A3194FDC1D31A302006F581F /* Constants.swift in Sources */,
 				A3194FDA1D30DF70006F581F /* NetworkManager.swift in Sources */,
 				A3194FCB1D30237A006F581F /* GithubAPI.xcdatamodeld in Sources */,
+				A33709871D33940B0060804B /* SavedUsersViewController.swift in Sources */,
 				A3194FE81D3256FC006F581F /* RepositoryTableViewCell.swift in Sources */,
 				76FDEE6C1D323D410033DDC2 /* User.swift in Sources */,
 				A3194FC51D30237A006F581F /* SearchViewController.swift in Sources */,
 				76FDEE6E1D323D410033DDC2 /* Repository.swift in Sources */,
 				76FDEE701D32407B0033DDC2 /* CoreDataManager.swift in Sources */,
+				A33709851D337DC30060804B /* DialogViewController.swift in Sources */,
 				A3194FC31D30237A006F581F /* AppDelegate.swift in Sources */,
 				A3194FDE1D31B2D9006F581F /* Utils.swift in Sources */,
+				A33709891D3394C50060804B /* SavedUserTableViewCell.swift in Sources */,
 				A3194FE91D3256FC006F581F /* UserDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

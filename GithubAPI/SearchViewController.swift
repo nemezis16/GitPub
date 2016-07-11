@@ -16,20 +16,23 @@ class SearchViewController: UIViewController {
     var user: User?
     let networkManager = NetworkManager.sharedManager
 
-//MARK: - LifeCycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchTextField.delegate = self
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        user = nil
+    }
+    
 //MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == String(UserDetailViewController) {
-            
             let controller = segue.destinationViewController as? UserDetailViewController
             controller?.user = user
-            
         }
     }
     
@@ -39,11 +42,18 @@ class SearchViewController: UIViewController {
         UIApplication.sharedApplication().openURL(NSURL(string: GitHubLink)!)
     }
     
+    @IBAction func handleSavedUsers(sender: AnyObject) {
+       
+    }
+    
     @IBAction func handleSearchButtonTap(sender: AnyObject) {
+        guard self.searchTextField.text != "" else {
+            return
+        }
+        
         let url = self.urlForUser(userName: self.searchTextField.text!)
         
         networkManager.fetchDataFromURL(url!) { (data, response, error) in
-            print(response?.URL)
             guard error == nil else {
                 Utils.showAlert(title: "Error", messageString: error?.localizedDescription, fromController: self)
                 return
@@ -74,6 +84,12 @@ class SearchViewController: UIViewController {
             }
         })
     }
-    
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
 }
 
