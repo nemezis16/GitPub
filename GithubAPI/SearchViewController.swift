@@ -24,7 +24,7 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        user = nil
+        self.user = nil
     }
     
 //MARK: - Segues

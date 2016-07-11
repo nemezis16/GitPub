@@ -40,16 +40,20 @@ class UserDetailViewController: UIViewController {
         loadImage()
         loadRepositories()
         
-        let userName = user.userName ?? "unknown"
-        let company = user.company ?? "unknown"
-        let email = user.email ?? "unknown"
-        let followersCount = user.followersCount?.stringValue ?? "unknown"
-        let followingsCount = user.followingCount?.stringValue ?? "unknown"
-        let publicGists = user.publicGists?.stringValue ?? "unknown"
-        let publicRepos = user.publicRepos?.stringValue ?? "unknown"
+        let unknown = "unknown".localized
         
-        userDetailTextView.text = "User name: \(userName)\nCompany: \(company)\nEmail: \(email)"
-        additionalInfoTextView.text = "Followers count: \(followersCount)\nFlollowings count: \(followingsCount)\nPublic gists: \(publicGists)\nPublic repos: \(publicRepos)"
+        let userName = user.userName ?? unknown
+        let company = user.company ?? unknown
+        let email = user.email ?? unknown
+        let followersCount = user.followersCount?.stringValue ?? unknown
+        let followingsCount = user.followingCount?.stringValue ?? unknown
+        let publicGists = user.publicGists?.stringValue ?? unknown
+        let publicRepos = user.publicRepos?.stringValue ?? unknown
+        
+        
+        userDetailTextView.text = String.localizedStringWithFormat("User details".localized, userName, company, email)
+        additionalInfoTextView.text = String.localizedStringWithFormat("Additional info".localized, followersCount, followingsCount, publicGists, publicRepos)
+        //"Followers count: \(followersCount)\nFlollowings count: \(followingsCount)\nPublic gists: \(publicGists)\nPublic repos: \(publicRepos)".localized
     }
     
     private func loadRepositories() {

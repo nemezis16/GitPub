@@ -65,6 +65,7 @@ extension SavedUsersViewController: UITableViewDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = storyboard.instantiateViewControllerWithIdentifier(String(UserDetailViewController)) as! UserDetailViewController
             viewController.user = user
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

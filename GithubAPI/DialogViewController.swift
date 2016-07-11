@@ -34,6 +34,7 @@ class DialogViewController: UIViewController {
     
     @IBAction func handleSaveTap(sender: AnyObject) {
         CoreDataManager.sharedManager.saveContext()
+        Utils.showAlert(title: "Done".localized, messageString: "User saved".localized, fromController: self)
     }
     
     @IBAction func handleShareTap(sender: AnyObject) {
