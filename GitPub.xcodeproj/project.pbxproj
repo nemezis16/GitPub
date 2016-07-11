@@ -25,6 +25,7 @@
 		A33709871D33940B0060804B /* SavedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33709861D33940B0060804B /* SavedUsersViewController.swift */; };
 		A33709891D3394C50060804B /* SavedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33709881D3394C50060804B /* SavedUserTableViewCell.swift */; };
 		A337099C1D33C53B0060804B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A337099E1D33C53B0060804B /* Localizable.strings */; };
+		A33709A51D33D45B0060804B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A33709A41D33D45B0060804B /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		A33709931D33BF450060804B /* uk */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = uk; path = uk.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A337099D1D33C53B0060804B /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A337099F1D33C54A0060804B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A33709A41D33D45B0060804B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		A3194FC11D30237A006F581F /* GitPub */ = {
 			isa = PBXGroup;
 			children = (
+				A33709A31D33D3640060804B /* SupportingFiles */,
 				A33709A01D33D31F0060804B /* ViewControllers */,
 				A3194FC21D30237A006F581F /* AppDelegate.swift */,
 				A3194FD91D30DF70006F581F /* NetworkManager.swift */,
@@ -99,14 +102,12 @@
 				A3194FDD1D31B2D9006F581F /* Utils.swift */,
 				76FDEE661D323C740033DDC2 /* CoreDataModels */,
 			);
-			name = GitPub;
-			path = GithubAPI;
+			path = GitPub;
 			sourceTree = "<group>";
 		};
 		A33709A01D33D31F0060804B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A33709A31D33D3640060804B /* SupportingFiles */,
 				A33709A21D33D3540060804B /* UserDetailViewController */,
 				A33709A11D33D3410060804B /* SavedUsersViewController */,
 				A33709841D337DC30060804B /* DialogViewController.swift */,
@@ -136,6 +137,7 @@
 		A33709A31D33D3640060804B /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				A33709A41D33D45B0060804B /* Default-568h@2x.png */,
 				A3194FC61D30237A006F581F /* Main.storyboard */,
 				A3194FCC1D30237A006F581F /* Assets.xcassets */,
 				A3194FCE1D30237A006F581F /* LaunchScreen.storyboard */,
@@ -208,6 +210,7 @@
 				A3194FD01D30237A006F581F /* LaunchScreen.storyboard in Resources */,
 				A337099C1D33C53B0060804B /* Localizable.strings in Resources */,
 				A3194FCD1D30237A006F581F /* Assets.xcassets in Resources */,
+				A33709A51D33D45B0060804B /* Default-568h@2x.png in Resources */,
 				A3194FC81D30237A006F581F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,7 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = GithubAPI/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GitPub/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = OR.GithubAPI;
 				PRODUCT_NAME = GitPub;
@@ -368,7 +371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = GithubAPI/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GitPub/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = OR.GithubAPI;
 				PRODUCT_NAME = GitPub;
